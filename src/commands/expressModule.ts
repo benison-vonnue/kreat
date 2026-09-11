@@ -9,7 +9,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export const command = "ExpressModule [moduleName]";
-export const desc = "Scaffolds a react component folder";
+export const desc = "Scaffolds an Express module";
 export const builder = {
   componentName: {
     default: "todos",
