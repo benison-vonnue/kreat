@@ -1,0 +1,31 @@
+import { Request, Response } from "express";
+import { {{it.serviceName}} } from "./{{it.moduleName}}.services.ts";
+
+export class {{it.controllerName}} {
+
+  // List Resource
+  static async list(req: Request, res: Response) {
+    // To Do
+  }
+
+  // Create Resource
+  static async create(req: Request, res: Response) {
+    // To Do
+  }
+
+  // View Resource By ID 
+  static async view(req: Request, res: Response) {
+    // To Do
+  }
+  
+  // Update Resource By ID 
+  static async update(req: Request, res: Response) {
+    // To Do
+  }
+
+
+  // Delete Resource By ID 
+  static async destroy(req: Request, res: Response) {
+    // To Do
+  }
+}

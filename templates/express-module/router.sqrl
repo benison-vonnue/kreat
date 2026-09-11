@@ -1,0 +1,15 @@
+import { Router } from "express";
+
+import { {{it.controllerName}} } from "./{{it.moduleName}}.controller.ts";
+
+export const {{it.routerName}} = Router();
+
+{{it.routerName}}.get("/", {{it.controllerName}}.list);
+
+{{it.routerName}}.post("/", {{it.controllerName}}.create);
+
+{{it.routerName}}.get("/:id", {{it.controllerName}}.view);
+
+{{it.routerName}}.patch("/:id", {{it.controllerName}}.update);
+
+{{it.routerName}}.delete("/:id", {{it.controllerName}}.destroy);
