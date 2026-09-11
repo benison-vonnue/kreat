@@ -9,6 +9,10 @@
     "component",
     "express"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/benison-vonnue/kreat"
+  },
   "license": "ISC",
   "author": "NoSineB",
   "type": "module",
