@@ -22,7 +22,8 @@
   },
   "scripts": {
     "test": "vitest",
-    "build": "tsc",
+    "clean": "rimraf dist",
+    "build": "npm run clean && tsc",
     "dev": "tsx src/cli.ts",
     "start": "node dist/cli.js",
     "prepublishOnly": "npm run build"
@@ -33,6 +34,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.20.2",
-    "@types/yargs": "^17.0.35"
+    "@types/yargs": "^17.0.35",
+    "rimraf": "^6.1.3"
   }
 }
