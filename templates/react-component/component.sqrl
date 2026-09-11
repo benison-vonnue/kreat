@@ -1,0 +1,11 @@
+import styles from "./{{it.componentName}}.module.css";
+
+interface Props{}
+
+const {{it.componentName}} = (props: Props) => {
+  return (
+    <div>{{it.componentName}}</div>
+  )
+} 
+
+export default {{it.componentName}};

@@ -1,0 +1,34 @@
+{
+  "name": "@nosineb/kreat",
+  "version": "1.0.0",
+  "description": "A simple scaffolding tool for me",
+  "keywords": [
+    "kreat",
+    "scaffold",
+    "react",
+    "component",
+    "express"
+  ],
+  "license": "ISC",
+  "author": "NoSineB",
+  "type": "module",
+  "main": "index.js",
+  "bin": {
+    "kreat": "./dist/cli.js"
+  },
+  "scripts": {
+    "test": "vitest",
+    "build": "tsc",
+    "dev": "tsx src/cli.ts",
+    "start": "node dist/cli.js",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "squirrelly": "^9.1.1",
+    "yargs": "^18.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.2",
+    "@types/yargs": "^17.0.35"
+  }
+}
