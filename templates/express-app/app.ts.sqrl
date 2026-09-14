@@ -1,0 +1,21 @@
+import express, { type Express, type Request, type Response } from "express";
+``;
+import cors from "cors";
+
+
+const app: Express = express();
+
+app.use(cors());
+
+app.use(express.json());
+
+app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(swaggerJson));
+
+app.get("/health", async (_req: Request, res: Response) => {
+  await prisma.$queryRaw`SELECT * FROM User`;
+  res.json({
+    status: "up",
+  });
+});
+
+export default app;
