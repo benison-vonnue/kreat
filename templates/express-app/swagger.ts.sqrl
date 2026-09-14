@@ -1,0 +1,26 @@
+import swaggerAutogen from "swagger-autogen";
+
+const doc = {
+  info: {
+    title: "{{it.appName}}",
+  },
+  components: {
+    securitySchemes: {
+      bearerAuth: {
+        type: "http",
+        scheme: "bearer",
+        bearerFormat: "JWT",
+      },
+    },
+  },
+  security: [
+    {
+      BearerAuth: [],
+    },
+  ],
+};
+
+const outputFile = "./src/swagger.json";
+const endpointsFiles = ["./src/app.ts"];
+
+swaggerAutogen({ openapi: "3.0.0" })(outputFile, endpointsFiles, doc);

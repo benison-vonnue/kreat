@@ -1,0 +1,47 @@
+import { NextFunction, Request, Response } from "express";
+import { HTTPError, NotFoundError } from "../utils/error";
+import { ZodRealError } from "zod";
+
+export function pageNotFoundMiddleware(
+  _req: Request,
+  _res: Response,
+  _next: NextFunction,
+) {
+  throw new NotFoundError();
+}
+
+export function errorHandlerMiddleware(
+  err: Error,
+  _req: Request,
+  res: Response,
+  next: NextFunction,
+) {
+  if (res.headersSent) {
+    return next(err);
+  }
+  if (err instanceof HTTPError) {
+    res.status(err.statusCode).json({
+      error: {
+        data: err.message,
+      },
+    });
+    return;
+  }
+  if (err instanceof ZodRealError) {
+    res.status(400).json({
+      error: {
+        data: err.issues,
+        name: err.name,
+        message: err.message,
+        stack: err.stack,
+      },
+    });
+    return;
+  }
+
+  res.status(500).json({
+    error: {
+      data: err.message,
+    },
+  });
+}

@@ -1,0 +1,31 @@
+export class HTTPError extends Error {
+  readonly statusCode: number;
+  constructor(statusCode: number, message: string) {
+    super(message);
+    this.statusCode = statusCode;
+  }
+}
+
+export class NotFoundError extends HTTPError {
+  constructor() {
+    super(404, "PAGE_NOT_FOUND");
+  }
+}
+
+export class UserNotFound extends HTTPError {
+  constructor() {
+    super(400, "USER_NOT_FOUND");
+  }
+}
+
+export class InvalidUserInput extends HTTPError {
+  constructor() {
+    super(400, "invalid login id or password");
+  }
+}
+
+export class ForbiddenEntry extends HTTPError {
+  constructor() {
+    super(403, "unauthorised access");
+  }
+}

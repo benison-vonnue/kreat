@@ -25,12 +25,23 @@ export const builder = {
     type: "boolean",
     describe: "Scaffolds a Express Prisma App",
   },
+  middleware: {
+    alias: "m",
+    type: "boolean",
+    describe: "Scaffolds the error middleware with App",
+  },
 };
 export const handler = async function ({
   appName,
   description,
   prisma,
-}: Arguments<{ appName: string; description: string; prisma: boolean }>) {
+  middleware,
+}: Arguments<{
+  appName: string;
+  description: string;
+  prisma: boolean;
+  middleware: boolean;
+}>) {
   const appNameLowerCase = appName.toLowerCase();
   const data = {
     appName: appNameLowerCase,
@@ -52,6 +63,15 @@ export const handler = async function ({
     path.join(__dirname, "../../templates/express-app/server.ts.sqrl"),
     data,
   );
+
+  const swagger_ts = await Sqrl.renderFile(
+    path.join(__dirname, "../../templates/express-app/swagger.ts.sqrl"),
+    data,
+  );
+  const gitignore = await Sqrl.renderFile(
+    path.join(__dirname, "../../templates/express-app/gitignore.sqrl"),
+    data,
+  );
   await createFile(`package.json`, package_json, {
     dir: appName,
   });
@@ -64,7 +84,12 @@ export const handler = async function ({
   await createFile(`app.ts`, app_ts, {
     dir: `${appName}/src`,
   });
-
+  await createFile(`swagger.ts`, swagger_ts, {
+    dir: appName,
+  });
+  await createFile(`.gitignore`, gitignore, {
+    dir: appName,
+  });
   if (prisma) {
     const prisma_package_json = await Sqrl.renderFile(
       path.join(
@@ -83,6 +108,14 @@ export const handler = async function ({
       data,
     );
 
+    const config = await Sqrl.renderFile(
+      path.join(
+        __dirname,
+        "../../templates/express-app/prisma7.config.json.sqrl",
+      ),
+      data,
+    );
+
     await createFile(`package.json`, prisma_package_json, {
       dir: appName,
     });
@@ -91,6 +124,31 @@ export const handler = async function ({
     });
     await createFile(`prisma.ts`, prisma_lib, {
       dir: `${appName}/src/lib`,
+    });
+    await createFile(`prisma7.config.ts`, config, {
+      dir: appName,
+    });
+  }
+
+  if (middleware) {
+    const util = await Sqrl.renderFile(
+      path.join(__dirname, "../../templates/express-app/error.ts.sqrl"),
+      data,
+    );
+
+    const middleware = await Sqrl.renderFile(
+      path.join(
+        __dirname,
+        "../../templates/express-app/error.middleware.ts.sqrl",
+      ),
+      data,
+    );
+
+    await createFile(`error.ts`, util, {
+      dir: `${appName}/src/utils`,
+    });
+    await createFile(`error.middleware.ts`, middleware, {
+      dir: `${appName}/src/middlewares`,
     });
   }
   console.log("Scaffold App called", appName);
