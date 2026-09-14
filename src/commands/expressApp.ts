@@ -47,6 +47,10 @@ export const handler = async function ({
     appName: appNameLowerCase,
     description,
   };
+  const readme = await Sqrl.renderFile(
+    path.join(__dirname, "../../templates/express-app/readme.md.sqrl"),
+    data,
+  );
   const package_json = await Sqrl.renderFile(
     path.join(__dirname, "../../templates/express-app/package.json.sqrl"),
     data,
@@ -72,6 +76,9 @@ export const handler = async function ({
     path.join(__dirname, "../../templates/express-app/gitignore.sqrl"),
     data,
   );
+  await createFile(`README.md`, readme, {
+    dir: appName,
+  });
   await createFile(`package.json`, package_json, {
     dir: appName,
   });
