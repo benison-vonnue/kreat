@@ -7,7 +7,7 @@ export const createFile = async (
 ) => {
   try {
     if (dir) {
-      await mkdir(dir);
+      await mkdir(dir, { recursive: true });
     }
   } catch (err) {}
   const absoluteFileName = dir ? `${dir}/${fileName}` : `${fileName}`;

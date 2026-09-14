@@ -13,11 +13,20 @@ export const desc = "Scaffolds a react component folder";
 export const builder = {
   componentName: {
     default: "MyComponent",
+    type: "string",
+    describe: "Enter name of your React Component",
+  },
+  dir: {
+    alias: "d",
+    type: "string",
+    default: "",
+    describe: "Scaffold react component in that directory",
   },
 };
 export const handler = async function ({
   componentName,
-}: Arguments<{ componentName: string }>) {
+  dir,
+}: Arguments<{ componentName: string; dir: string }>) {
   const component = await Sqrl.renderFile(
     path.join(__dirname, "../../templates/react-component/component.sqrl"),
     { componentName },
@@ -30,8 +39,10 @@ export const handler = async function ({
     path.join(__dirname, "../../templates/react-component/index.sqrl"),
     { componentName },
   );
-  await createFile(`${componentName}.tsx`, component, { dir: componentName });
-  await createFile(`${componentName}.module.css`, css, { dir: componentName });
-  await createFile(`index.ts`, index, { dir: componentName });
+  const scaffoldDir =
+    dir !== "" ? `${dir}/${componentName}` : `${componentName}`;
+  await createFile(`${componentName}.tsx`, component, { dir: scaffoldDir });
+  await createFile(`${componentName}.module.css`, css, { dir: scaffoldDir });
+  await createFile(`index.ts`, index, { dir: scaffoldDir });
   console.log("Created React Component Called", componentName);
 };

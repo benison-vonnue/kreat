@@ -3,7 +3,6 @@ import * as Sqrl from "squirrelly";
 import path from "path";
 import { createFile } from "../utils/write.js";
 import { fileURLToPath } from "url";
-import yargs from "yargs";
 // Recreate __dirname and __filename manually
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -13,12 +12,18 @@ export const desc = "Scaffolds an Express App";
 export const builder = {
   appName: {
     default: "myApp",
+    type: "string",
+    describe: "Enter name of your App",
   },
   description: {
     default: "",
+    type: "string",
+    describe: "Enter description for your App",
   },
   prisma: {
     alias: "p",
+    type: "boolean",
+    describe: "Scaffolds a Express Prisma App",
   },
 };
 export const handler = async function ({

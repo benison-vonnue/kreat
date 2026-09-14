@@ -13,6 +13,8 @@ export const desc = "Scaffolds an Express module";
 export const builder = {
   componentName: {
     default: "todos",
+    type: "string",
+    describe: "Enter name of your module",
   },
 };
 export const handler = async function ({
