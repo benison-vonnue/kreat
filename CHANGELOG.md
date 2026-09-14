@@ -2,15 +2,20 @@
 
 All notable changes to this project are documented in this file.
 
-## [1.2.4] - 2026-09-14
+## [1.2.5] - 2026-09-14
 
+### Fixed
+- Fixed `kreat` failing with a "Permission denied" error when run directly via `npx` without installing.
+
+## [1.2.4] - 2026-09-14
 
 ### Added
 - `-m` / `--middleware` flag for `ExpressApp` — scaffolds error-handling middleware alongside the app.
+- `ExpressApp` now also scaffolds a `.gitignore` and `swagger.ts` file.
+- Prisma scaffolding now includes a `prisma7.config.json` file.
 
 ### Changed
-- Updated `README.md` and `CHANGELOG.md` to document the new option added
-
+- Updated `README.md` and `CHANGELOG.md`.
 
 ## [1.2.3] - 2026-09-14
 
