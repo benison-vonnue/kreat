@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented in this file.
 
+## [1.2.6] - 2026-09-14
+
+### Added
+- `ExpressApp` now also scaffolds a `README.md` for the generated project.
+- `-d` / `--dir` flag for `ExpressModule` — lets you choose the directory to scaffold into.
+
 ## [1.2.5] - 2026-09-14
 
 ### Fixed

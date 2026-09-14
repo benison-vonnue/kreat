@@ -62,9 +62,10 @@ kreat ExpressModule [moduleName]
 | Flag | Description | Default |
 |---|---|---|
 | `--componentName` | Name of your module | `todos` |
+| `-d`, `--dir` | Directory to scaffold into | `.` |
 
 ```bash
-kreat ExpressModule users
+kreat ExpressModule users -d src/modules
 ```
 
 ---
