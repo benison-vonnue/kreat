@@ -1,4 +1,4 @@
-# kreat
+### kreat
 
 A CLI scaffolding tool for generating project boilerplate — React components, Express modules, and full Express apps — from a single command.
 
@@ -32,28 +32,63 @@ Enter scaffold type and name
 |---|---|---|
 | `kreat ReactComponent [componentName]` | `componentName` | Scaffolds a React component folder |
 | `kreat ExpressModule [moduleName]` | `moduleName` | Scaffolds an Express module |
-| `kreat ExpressApp [appName] [description]` | `appName`, `description` | Scaffolds an Express app |
+| `kreat ExpressApp [appName] [description]` | `appName`, `description` | Scaffolds an Express App |
 
-Examples:
+---
+
+### `ReactComponent`
 
 ```bash
-kreat ReactComponent Button
-kreat ExpressModule users
-kreat ExpressApp my-api "A small REST API"
+kreat ReactComponent [componentName]
 ```
 
-### `ExpressApp` flags
+| Flag | Description | Default |
+|---|---|---|
+| `--componentName` | Name of your React Component | `MyComponent` |
+| `-d`, `--dir` | Scaffold the component in a specific directory | `""` |
 
-| Flag | Description |
-|---|---|
-| `-p`, `--prisma` | Also scaffolds Prisma files alongside the Express app |
+```bash
+kreat ReactComponent Button -d src/components/ui
+```
+
+---
+
+### `ExpressModule`
+
+```bash
+kreat ExpressModule [moduleName]
+```
+
+| Flag | Description | Default |
+|---|---|---|
+| `--componentName` | Name of your module | `todos` |
+
+```bash
+kreat ExpressModule users
+```
+
+---
+
+### `ExpressApp`
+
+```bash
+kreat ExpressApp [appName] [description]
+```
+
+| Flag | Description | Default |
+|---|---|---|
+| `--appName` | Name of your App | `myApp` |
+| `--description` | Description for your App | `""` |
+| `-p`, `--prisma` | Also scaffolds Prisma files alongside the Express app | `false` |
 
 ```bash
 kreat ExpressApp my-api "A small REST API" -p
 kreat ExpressApp my-api "A small REST API" --prisma
 ```
 
-### Options
+---
+
+### Global options
 
 | Flag | Description |
 |---|---|
