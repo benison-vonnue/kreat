@@ -2,6 +2,16 @@
 
 All notable changes to this project are documented in this file.
 
+## [1.2.3] - 2026-09-14
+
+### Fixed
+- `ExpressApp` now creates the app inside a directory named after `appName`, instead of scaffolding into the current directory.
+
+## [1.2.2] - 2026-09-14
+
+### Fixed
+- Removed `src/lib/prisma.ts`, which had been added unintentionally in the previous release.
+
 ## [1.2.1] - 2026-09-14
 
 ### Added
