@@ -1,4 +1,4 @@
-### kreat
+# kreat
 
 A CLI scaffolding tool for generating project boilerplate — React components, Express modules, and full Express apps — from a single command.
 
@@ -80,10 +80,12 @@ kreat ExpressApp [appName] [description]
 | `--appName` | Name of your App | `myApp` |
 | `--description` | Description for your App | `""` |
 | `-p`, `--prisma` | Also scaffolds Prisma files alongside the Express app | `false` |
+| `-m`, `--middleware` | Also scaffolds error-handling middleware with the app | `false` |
 
 ```bash
 kreat ExpressApp my-api "A small REST API" -p
 kreat ExpressApp my-api "A small REST API" --prisma
+kreat ExpressApp my-api "A small REST API" -m
 ```
 
 ---

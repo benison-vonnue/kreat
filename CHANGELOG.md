@@ -2,6 +2,16 @@
 
 All notable changes to this project are documented in this file.
 
+## [1.2.4] - 2026-09-14
+
+
+### Added
+- `-m` / `--middleware` flag for `ExpressApp` — scaffolds error-handling middleware alongside the app.
+
+### Changed
+- Updated `README.md` and `CHANGELOG.md` to document the new option added
+
+
 ## [1.2.3] - 2026-09-14
 
 ### Fixed
