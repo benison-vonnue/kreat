@@ -2,10 +2,19 @@
 
 All notable changes to this project are documented in this file.
 
+## [1.2.1] - 2026-09-14
+
+### Added
+- Descriptions and help text for all commands (`ExpressApp`, `ExpressModule`, `ReactComponent`).
+
+### Changed
+- Updated `README.md` to document the new command descriptions/help text.
+
 ## [1.2.0] - 2026-09-14
 
 ### Added
 - `ExpressApp` command — scaffolds a full Express app, including a `-p` / `--prisma` flag to also scaffold Prisma files alongside it.
+- `CHANGELOG.md` added to the project.
 
 ### Changed
 - Updated `README.md` to document the new `ExpressApp` command.
