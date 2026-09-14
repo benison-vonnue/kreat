@@ -52,13 +52,17 @@ export const handler = async function ({
     path.join(__dirname, "../../templates/express-app/server.ts.sqrl"),
     data,
   );
-  await createFile(`package.json`, package_json, {});
-  await createFile(`tsconfig.json`, tsconfig_json, {});
+  await createFile(`package.json`, package_json, {
+    dir: appName,
+  });
+  await createFile(`tsconfig.json`, tsconfig_json, {
+    dir: appName,
+  });
   await createFile(`server.ts`, server_ts, {
-    dir: "src",
+    dir: `${appName}/src`,
   });
   await createFile(`app.ts`, app_ts, {
-    dir: "src",
+    dir: `${appName}/src`,
   });
 
   if (prisma) {
@@ -79,10 +83,14 @@ export const handler = async function ({
       data,
     );
 
-    await createFile(`package.json`, prisma_package_json, {});
-    await createFile(`.env`, env, {});
+    await createFile(`package.json`, prisma_package_json, {
+      dir: appName,
+    });
+    await createFile(`.env`, env, {
+      dir: appName,
+    });
     await createFile(`prisma.ts`, prisma_lib, {
-      dir: "src/lib",
+      dir: `${appName}/src/lib`,
     });
   }
   console.log("Scaffold App called", appName);
