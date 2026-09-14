@@ -16,10 +16,17 @@ export const builder = {
     type: "string",
     describe: "Enter name of your module",
   },
+  dir: {
+    alias: "d",
+    default: ".",
+    type: "string",
+    describe: "Enter the directory in which you want to scaffold",
+  },
 };
 export const handler = async function ({
   moduleName,
-}: Arguments<{ moduleName: string }>) {
+  dir,
+}: Arguments<{ moduleName: string; dir: string }>) {
   const moduleNameLowerCase = moduleName.toLowerCase();
   const capitalize = moduleName.charAt(0).toUpperCase() + moduleName.slice(1);
   const routerName = `${moduleName}Routes`;
@@ -55,19 +62,19 @@ export const handler = async function ({
   );
 
   await createFile(`${moduleNameLowerCase}.routes.ts`, router, {
-    dir: moduleNameLowerCase,
+    dir: `${dir}/${moduleNameLowerCase}`,
   });
   await createFile(`${moduleNameLowerCase}.controller.ts`, controller, {
-    dir: moduleNameLowerCase,
+    dir: `${dir}/${moduleNameLowerCase}`,
   });
   await createFile(`${moduleNameLowerCase}.services.ts`, services, {
-    dir: moduleNameLowerCase,
+    dir: `${dir}/${moduleNameLowerCase}`,
   });
   await createFile(`${moduleNameLowerCase}.repository.ts`, repository, {
-    dir: moduleNameLowerCase,
+    dir: `${dir}/${moduleNameLowerCase}`,
   });
   await createFile(`${moduleNameLowerCase}.schemas.ts`, schemas, {
-    dir: moduleNameLowerCase,
+    dir: `${dir}/${moduleNameLowerCase}`,
   });
   console.log("Created Module called", moduleNameLowerCase);
 };
